@@ -1,4 +1,4 @@
-/*	Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com / https://blog.gentilkiwi.com )
+/*	Benjamin DELPY `FYtD` ( benjamin@FYtD.com / https://blog.FYtD.com )
 	Vincent LE TOUX ( vincent.letoux@gmail.com / http://www.mysmartlogon.com )
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
@@ -714,7 +714,7 @@ NTSTATUS kull_m_rpc_drsr_start_server(LPCWSTR ServName, LPCGUID InstName)
 							else PRINT_ERROR(L"RpcBindingToStringBinding: %08x\n", status);
 						}
 
-						status = RpcEpRegister(drsuapi_v4_0_s_ifspec, vector, NULL, (RPC_WSTR) MIMIKATZ L" Ho, hey! I\'m a DC :)");
+						status = RpcEpRegister(drsuapi_v4_0_s_ifspec, vector, NULL, (RPC_WSTR) EARDOGZ L" Ho, hey! I\'m a DC :)");
 						RpcBindingVectorFree(&vector);
 						if(status == RPC_S_OK)
 						{

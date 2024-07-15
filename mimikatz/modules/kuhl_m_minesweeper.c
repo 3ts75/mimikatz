@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kuhl_m_minesweeper.h"
@@ -73,7 +73,7 @@ NTSTATUS kuhl_m_minesweeper_infos(int argc, wchar_t * argv[])
 									if(kull_m_memory_copy(&aBuffer, &aRemote, sizeof(STRUCT_MINESWEEPER_GAME)))
 									{
 #if defined(_M_IX86)
-										if(MIMIKATZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_7)
+										if(EARDOGZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_7)
 											Game.pBoard = Game.pBoard_WIN7x86;
 #endif
 										aRemote.address = Game.pBoard;

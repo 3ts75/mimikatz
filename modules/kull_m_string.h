@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #pragma once
@@ -97,7 +97,7 @@ BOOL kull_m_string_copyA_len(LPSTR *dst, LPCSTR src, size_t size);
 BOOL kull_m_string_copyA(LPSTR *dst, LPCSTR src);
 PWSTR kull_m_string_unicode_to_string(PCUNICODE_STRING src);
 BOOL kull_m_string_quickxml_simplefind(LPCWSTR xml, LPCWSTR node, LPWSTR *dst);
-#if !defined(MIMIKATZ_W2000_SUPPORT)
+#if !defined(EARDOGZ_W2000_SUPPORT)
 BOOL kull_m_string_quick_base64_to_Binary(PCWSTR base64, PBYTE *data, DWORD *szData);
 BOOL kull_m_string_quick_base64_to_BinaryA(PCSTR base64, PBYTE *data, DWORD *szData);
 BOOL kull_m_string_quick_urlsafe_base64_to_Binary(PCWSTR badBase64, PBYTE *data, DWORD *szData);

@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #pragma once
@@ -22,34 +22,35 @@
 //#define SERVICE_INCONTROL
 #define NET_MODULE
 #if defined(_M_ARM64)
-	#define MIMIKATZ_ARCH L"arm64"
+	#define EARDOGZ_ARCH L"arm64"
 #elif defined(_M_X64)
-	#define MIMIKATZ_ARCH L"x64"
+	#define EARDOGZ_ARCH L"x64"
 #elif defined(_M_IX86)
-	#define MIMIKATZ_ARCH L"x86"
+	#define EARDOGZ_ARCH L"x86"
 #endif
 
-#define MIMIKATZ				L"mimikatz"
-#define MIMIKATZ_VERSION		L"2.2.0"
-#define MIMIKATZ_CODENAME		L"A La Vie, A L\'Amour"
-#define MIMIKATZ_MAX_WINBUILD	L"19041"
-#define MIMIKATZ_FULL			MIMIKATZ L" " MIMIKATZ_VERSION L" (" MIMIKATZ_ARCH L") #" MIMIKATZ_MAX_WINBUILD L" " TEXT(__DATE__) L" " TEXT(__TIME__)
-#define MIMIKATZ_SECOND			L"\"" MIMIKATZ_CODENAME L"\""
-#define MIMIKATZ_DEFAULT_LOG	MIMIKATZ L".log"
-#define MIMIKATZ_DRIVER			L"mimidrv"
-#define MIMIKATZ_KERBEROS_EXT	L"kirbi"
-#define MIMIKATZ_SERVICE		MIMIKATZ L"svc"
+#define EARDOGZ				L"eardogz"
+//#define eardogz_VERSION		L"2.2.0"
+#define EARDOGZ_VERSION		L"1.0.0.0"
+#define EARDOGZ_CODENAME		L"A La Vie, A L\'Amour"
+#define EARDOGZ_MAX_WINBUILD	L"19041"
+#define EARDOGZ_FULL			EARDOGZ L" " EARDOGZ_VERSION L" (" EARDOGZ_ARCH L") #" EARDOGZ_MAX_WINBUILD L" " TEXT(__DATE__) L" " TEXT(__TIME__)
+#define EARDOGZ_SECOND			L"\"" EARDOGZ_CODENAME L"\""
+#define EARDOGZ_DEFAULT_LOG	EARDOGZ L".log"
+#define EARDOGZ_DRIVER			L"mimidrv"
+#define EARDOGZ_KERBEROS_EXT	L"kirbi"
+#define EARDOGZ_SERVICE		EARDOGZ L"svc"
 
 #if defined(_WINDLL)
-	#define MIMIKATZ_AUTO_COMMAND_START		0
+	#define EARDOGZ_AUTO_COMMAND_START		0
 #else
-	#define MIMIKATZ_AUTO_COMMAND_START		1
+	#define EARDOGZ_AUTO_COMMAND_START		1
 #endif
 
 #if defined(_POWERKATZ)
-	#define MIMIKATZ_AUTO_COMMAND_STRING	L"powershell"
+	#define EARDOGZ_AUTO_COMMAND_STRING	L"powershell"
 #else
-	#define MIMIKATZ_AUTO_COMMAND_STRING	L"commandline"
+	#define EARDOGZ_AUTO_COMMAND_STRING	L"commandline"
 #endif
 
 #if !defined(NT_SUCCESS)
@@ -61,14 +62,14 @@
 #endif
 
 #if !defined(PRINT_ERROR_AUTO)
-#define PRINT_ERROR_AUTO(func) (kprintf(L"ERROR " TEXT(__FUNCTION__) L" ; " func L" (0x%08x)\n", GetLastError()))
+#define PRINT_ERROR_AUTO(func) (kprintf(L"ERROR " TEXT(__FUNCTION__) L" @eardogz; " func L" (0x%08x)\n", GetLastError()))
 #endif
 
 #if !defined(W00T)
 #define W00T(...) (kprintf(TEXT(__FUNCTION__) L" w00t! ; " __VA_ARGS__))
 #endif
 
-DWORD MIMIKATZ_NT_MAJOR_VERSION, MIMIKATZ_NT_MINOR_VERSION, MIMIKATZ_NT_BUILD_NUMBER;
+DWORD EARDOGZ_NT_MAJOR_VERSION, EARDOGZ_NT_MINOR_VERSION, EARDOGZ_NT_BUILD_NUMBER;
 
 #if !defined(MS_ENH_RSA_AES_PROV_XP)
 #define MS_ENH_RSA_AES_PROV_XP	L"Microsoft Enhanced RSA and AES Cryptographic Provider (Prototype)"
@@ -131,7 +132,7 @@ DWORD MIMIKATZ_NT_MAJOR_VERSION, MIMIKATZ_NT_MINOR_VERSION, MIMIKATZ_NT_BUILD_NU
 #define KULL_M_WIN_MIN_BUILD_10		9800
 #define KULL_M_WIN_MIN_BUILD_11		22000
 
-/* mimikatz 3 transition */
+/* eardogz 3 transition */
 #define PRINT_ERROR_NUMBER(func, error)	PRINT_ERROR(func L": 0x%08x\n", error)
 
 #define GET_CLI_ARG(name, var) (kull_m_string_args_byName(argc, argv, name, var, NULL))

@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 
 	Vincent LE TOUX
 	http://pingcastle.com / http://mysmartlogon.com

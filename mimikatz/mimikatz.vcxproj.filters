@@ -343,7 +343,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="mimikatz.h" />
+    <ClInclude Include="eardogz.h" />
     <ClInclude Include="modules\kuhl_m.h">
       <Filter>local modules</Filter>
     </ClInclude>
@@ -749,6 +749,6 @@
     <ResourceCompile Include="mimikatz.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="mimikatz.ico" />
+    <None Include="eardogz.ico" />
   </ItemGroup>
 </Project>

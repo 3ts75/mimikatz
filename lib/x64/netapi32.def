@@ -1,0 +1,5 @@
+LIBRARY netapi32.dll
+EXPORTS
+    I_NetServerAuthenticate2 @ 59
+    I_NetServerReqChallenge @ 66
+    I_NetServerTrustPasswordsGet @ 69

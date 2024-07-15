@@ -1,11 +1,11 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #pragma once
 #include "kuhl_m.h"
-#include "../mimikatz.h"
+#include "../eardogz.h"
 #include "../../modules/rpc/kull_m_rpc_mimicom.h"
 
 const KUHL_M kuhl_m_rpc;

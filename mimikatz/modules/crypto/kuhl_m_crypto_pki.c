@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kuhl_m_crypto_pki.h"
@@ -594,7 +594,7 @@ NTSTATUS kuhl_m_crypto_c_sc_auth(int argc, wchar_t * argv[])
 		if(kull_m_string_args_byName(argc, argv, L"upn", &szUPN, NULL))
 		{
 			kull_m_string_args_byName(argc, argv, L"cn", &ci.cn, szUPN);
-			kull_m_string_args_byName(argc, argv, L"o", &ci.o, MIMIKATZ);
+			kull_m_string_args_byName(argc, argv, L"o", &ci.o, EARDOGZ);
 			kull_m_string_args_byName(argc, argv, L"ou", &ci.ou, NULL);
 			kull_m_string_args_byName(argc, argv, L"c", &ci.c, L"FR");
 

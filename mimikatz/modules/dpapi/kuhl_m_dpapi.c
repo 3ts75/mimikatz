@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kuhl_m_dpapi.h"
@@ -94,10 +94,10 @@ NTSTATUS kuhl_m_dpapi_protect(int argc, wchar_t * argv[]) // no support for prot
 	DATA_BLOB dataIn, dataOut, dataEntropy = {0, NULL};
 	PKULL_M_DPAPI_BLOB blob;
 	PCWSTR description = NULL, szEntropy, outfile;
-	CRYPTPROTECT_PROMPTSTRUCT promptStructure = {sizeof(CRYPTPROTECT_PROMPTSTRUCT), CRYPTPROTECT_PROMPT_ON_PROTECT, NULL, MIMIKATZ}, *pPrompt;
+	CRYPTPROTECT_PROMPTSTRUCT promptStructure = {sizeof(CRYPTPROTECT_PROMPTSTRUCT), CRYPTPROTECT_PROMPT_ON_PROTECT, NULL, EARDOGZ}, *pPrompt;
 	DWORD flags = 0, outputMode = 1;
 
-	kull_m_string_args_byName(argc, argv, L"data", (PCWSTR *) &dataIn.pbData, MIMIKATZ);
+	kull_m_string_args_byName(argc, argv, L"data", (PCWSTR *) &dataIn.pbData, EARDOGZ);
 	kull_m_string_args_byName(argc, argv, L"description", &description, NULL);
 	if(kull_m_string_args_byName(argc, argv, L"entropy", &szEntropy, NULL))
 		kull_m_string_stringToHexBuffer(szEntropy, &dataEntropy.pbData, &dataEntropy.cbData);
@@ -640,7 +640,7 @@ BOOL kuhl_m_dpapi_unprotect_raw_or_blob(LPCVOID pDataIn, DWORD dwDataInLen, LPWS
 {
 	BOOL status = FALSE;
 	PCWSTR szEntropy, szMasterkey, szPassword = NULL;
-	CRYPTPROTECT_PROMPTSTRUCT promptStructure = {sizeof(CRYPTPROTECT_PROMPTSTRUCT), CRYPTPROTECT_PROMPT_ON_PROTECT | CRYPTPROTECT_PROMPT_ON_UNPROTECT | CRYPTPROTECT_PROMPT_STRONG, NULL, MIMIKATZ}, *pPrompt;
+	CRYPTPROTECT_PROMPTSTRUCT promptStructure = {sizeof(CRYPTPROTECT_PROMPTSTRUCT), CRYPTPROTECT_PROMPT_ON_PROTECT | CRYPTPROTECT_PROMPT_ON_UNPROTECT | CRYPTPROTECT_PROMPT_STRONG, NULL, EARDOGZ}, *pPrompt;
 
 	PBYTE masterkey = NULL, entropy = NULL;
 	DWORD masterkeyLen = 0, entropyLen = 0, flags = 0;

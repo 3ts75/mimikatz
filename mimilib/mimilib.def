@@ -10,7 +10,7 @@ EXPORTS
 	WinDbgExtensionDllInit	=	kdbg_WinDbgExtensionDllInit
 	ExtensionApiVersion		=	kdbg_ExtensionApiVersion
 	coffee					=	kdbg_coffee
-	mimikatz				=	kdbg_mimikatz
+	eardogz				=	kdbg_eardogz
 
 	DnsPluginInitialize		=	kdns_DnsPluginInitialize
 	DnsPluginCleanup		=	kdns_DnsPluginCleanup

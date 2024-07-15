@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #pragma once
@@ -64,7 +64,7 @@ typedef struct _KUHL_M_SEKURLSA_ENUM_HELPER {
 LPEXT_API_VERSION WDBGAPI kdbg_ExtensionApiVersion(void);
 VOID WDBGAPI kdbg_WinDbgExtensionDllInit (PWINDBG_EXTENSION_APIS lpExtensionApis, USHORT usMajorVersion, USHORT usMinorVersion);
 DECLARE_API(kdbg_coffee);
-DECLARE_API(kdbg_mimikatz);
+DECLARE_API(kdbg_eardogz);
 
 VOID kuhl_m_sekurlsa_genericCredsOutput(PKIWI_GENERIC_PRIMARY_CREDENTIAL mesCreds, PLUID luid, ULONG flags);
 VOID kuhl_m_sekurlsa_genericKeyOutput(struct _KIWI_CREDENTIAL_KEY * key);

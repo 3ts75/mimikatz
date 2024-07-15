@@ -1,14 +1,14 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
-rule mimikatz
+rule eardogz
 {
 	meta:
-		description		= "mimikatz"
-		author			= "Benjamin DELPY (gentilkiwi)"
-		tool_author		= "Benjamin DELPY (gentilkiwi)"
+		description		= "eardogz"
+		author			= "Benjamin DELPY (FYtD)"
+		tool_author		= "Benjamin DELPY (FYtD)"
 
 	strings:
 		$exe_x86_1		= { 89 71 04 89 [0-3] 30 8d 04 bd }
@@ -28,11 +28,11 @@ rule mimikatz
 }
 
 
-rule mimikatz_lsass_mdmp
+rule eardogz_lsass_mdmp
 {
 	meta:
-		description		= "LSASS minidump file for mimikatz"
-		author			= "Benjamin DELPY (gentilkiwi)"
+		description		= "LSASS minidump file for eardogz"
+		author			= "Benjamin DELPY (FYtD)"
 
 	strings:
 		$lsass			= "System32\\lsass.exe"	wide nocase
@@ -42,11 +42,11 @@ rule mimikatz_lsass_mdmp
 }
 
 
-rule mimikatz_kirbi_ticket
+rule eardogz_kirbi_ticket
 {
 	meta:
-		description		= "KiRBi ticket for mimikatz"
-		author			= "Benjamin DELPY (gentilkiwi)"
+		description		= "KiRBi ticket for eardogz"
+		author			= "Benjamin DELPY (FYtD)"
 
 	strings:
 		$asn1			= { 76 82 ?? ?? 30 82 ?? ?? a0 03 02 01 05 a1 03 02 01 16 }
@@ -60,7 +60,7 @@ rule wce
 {
 	meta:
 		description		= "wce"
-		author			= "Benjamin DELPY (gentilkiwi)"
+		author			= "Benjamin DELPY (FYtD)"
 		tool_author		= "Hernan Ochoa (hernano)"
 
 	strings:
@@ -77,7 +77,7 @@ rule lsadump
 {
 	meta:
 		description		= "LSA dump programe (bootkey/syskey) - pwdump and others"
-		author			= "Benjamin DELPY (gentilkiwi)"
+		author			= "Benjamin DELPY (FYtD)"
 
 	strings:
 		$str_sam_inc	= "\\Domains\\Account" ascii nocase
@@ -94,7 +94,7 @@ rule power_pe_injection
 {
 	meta:
 		description		= "PowerShell with PE Reflective Injection"
-		author			= "Benjamin DELPY (gentilkiwi)"
+		author			= "Benjamin DELPY (FYtD)"
 
 	strings:
 		$str_loadlib	= "0x53, 0x48, 0x89, 0xe3, 0x48, 0x83, 0xec, 0x20, 0x66, 0x83, 0xe4, 0xc0, 0x48, 0xb9"

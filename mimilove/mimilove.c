@@ -1,6 +1,6 @@
-﻿/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+﻿/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "mimilove.h"
@@ -16,8 +16,8 @@ int wmain(int argc, wchar_t *argv[])
 		L"  .#####.   " MIMILOVE_FULL L"\n"
 		L" .## ^ ##.  " MIMILOVE_SECOND L"\n"
 		L" ## / \\ ##  /* * *\n"
-		L" ## \\ / ##   Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )\n"
-		L" '## v ##'   https://blog.gentilkiwi.com/mimikatz             (oe.eo)\n"
+		L" ## \\ / ##   Benjamin DELPY `FYtD` ( benjamin@FYtD.com )\n"
+		L" '## v ##'   https://blog.FYtD.com/eardogz             (oe.eo)\n"
 		L"  '#####'    " MIMILOVE_SPECIAL L"* * */\n\n");
 
 	RtlZeroMemory(&osInfo, sizeof(OSVERSIONINFO));

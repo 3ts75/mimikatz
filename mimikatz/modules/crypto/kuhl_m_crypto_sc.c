@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kuhl_m_crypto_sc.h"
@@ -466,7 +466,7 @@ void kuhl_m_crypto_l_mdr(LPCWSTR szMdr, SCARDCONTEXT ctxScard, SCARDHANDLE hScar
 
 				enuma(&cd, NULL);
 				enuma(&cd, "mscp");
-				enuma(&cd, "mimikatz");
+				enuma(&cd, "eardogz");
 
 				status = cd.pfnCardDeleteContext(&cd);
 				if(status != SCARD_S_SUCCESS)

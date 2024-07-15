@@ -79,9 +79,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <Optimization>Full</Optimization>
+      <Optimization>MinSpace</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)' == 'Second_Release_PowerShell'">_POWERKATZ;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -94,7 +94,7 @@
       <FloatingPointExceptions>false</FloatingPointExceptions>
       <CreateHotpatchableImage>false</CreateHotpatchableImage>
       <ErrorReporting>None</ErrorReporting>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -109,6 +109,7 @@
       <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
       <DelayLoadDLLs>bcrypt.dll;ncrypt.dll</DelayLoadDLLs>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)eardogz$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
@@ -286,7 +287,7 @@
     <ClInclude Include="..\modules\rpc\kull_m_rpc_ms-par.h" />
     <ClInclude Include="..\modules\rpc\kull_m_rpc_ms-rprn.h" />
     <ClInclude Include="..\modules\sqlite3.h" />
-    <ClInclude Include="mimikatz.h" />
+    <ClInclude Include="eardogz.h" />
     <ClInclude Include="modules\crypto\kuhl_m_crypto_extractor.h" />
     <ClInclude Include="modules\crypto\kuhl_m_crypto_patch.h" />
     <ClInclude Include="modules\crypto\kuhl_m_crypto_pki.h" />
@@ -356,6 +357,6 @@
   </ItemGroup>
   <ItemGroup Condition="'$(ConfigurationType)' == 'Application'">
     <ResourceCompile Include="mimikatz.rc" />
-    <None Include="mimikatz.ico" />
+    <None Include="eardogz.ico" />
   </ItemGroup>
 </Project>

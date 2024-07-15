@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #pragma once
@@ -19,18 +19,18 @@
 #include <stdio.h>
 
 #if defined(_M_ARM64)
-	#define MIMIKATZ_ARCH_A "arm64"
+	#define EARDOGZ_ARCH_A "arm64"
 #elif defined(_M_X64)
-	#define MIMIKATZ_ARCH_A "x64"
+	#define EARDOGZ_ARCH_A "x64"
 #elif defined(_M_IX86)
-	#define MIMIKATZ_ARCH_A "x86"
+	#define EARDOGZ_ARCH_A "x86"
 #endif
 
-#define MIMIKATZ_A				"mimikatz"
-#define MIMIKATZ_VERSION_A		"2.2.0"
-#define MIMIKATZ_CODENAME_A		"A La Vie, A L\'Amour"
-#define MIMIKATZ_FULL_A			MIMIKATZ_A " " MIMIKATZ_VERSION_A " (" MIMIKATZ_ARCH_A ") built on " __DATE__ " " __TIME__
-#define MIMIKATZ_SECOND_A		"\"" MIMIKATZ_CODENAME_A "\""
+#define EARDOGZ_A				"eardogz"
+#define EARDOGZ_VERSION_A		"2.2.0"
+#define EARDOGZ_CODENAME_A		"A La Vie, A L\'Amour"
+#define EARDOGZ_FULL_A			EARDOGZ_A " " EARDOGZ_VERSION_A " (" EARDOGZ_ARCH_A ") built on " __DATE__ " " __TIME__
+#define EARDOGZ_SECOND_A		"\"" EARDOGZ_CODENAME_A "\""
 
 #if !defined(NT_SUCCESS)
 #define NT_SUCCESS(Status) ((NTSTATUS)(Status) >= 0)

@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kuhl_m_dpapi_oe.h"
@@ -372,7 +372,7 @@ NTSTATUS kuhl_m_dpapi_oe_clean()
 NTSTATUS kuhl_m_dpapi_oe_cache(int argc, wchar_t * argv[])
 {
 	LPCWSTR filename;
-	kull_m_string_args_byName(argc, argv, L"file", &filename, MIMIKATZ L"_dpapi_cache.ndr");
+	kull_m_string_args_byName(argc, argv, L"file", &filename, EARDOGZ L"_dpapi_cache.ndr");
 	
 	if(kull_m_string_args_byName(argc, argv, L"flush", NULL, NULL))
 	{

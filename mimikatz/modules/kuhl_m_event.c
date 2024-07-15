@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kuhl_m_event.h"
@@ -76,7 +76,7 @@ KULL_M_PATCH_GENERIC EventReferences[] = {
 
 NTSTATUS kuhl_m_event_drop(int argc, wchar_t * argv[])
 {
-	kull_m_patch_genericProcessOrServiceFromBuild(EventReferences, ARRAYSIZE(EventReferences), L"EventLog", (MIMIKATZ_NT_MAJOR_VERSION < 6) ? L"eventlog.dll" : L"wevtsvc.dll", TRUE);
+	kull_m_patch_genericProcessOrServiceFromBuild(EventReferences, ARRAYSIZE(EventReferences), L"EventLog", (EARDOGZ_NT_MAJOR_VERSION < 6) ? L"eventlog.dll" : L"wevtsvc.dll", TRUE);
 	return STATUS_SUCCESS;
 }
 

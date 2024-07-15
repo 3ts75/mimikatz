@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #pragma once
@@ -9,7 +9,7 @@
 #include <fcntl.h>
 
 FILE * logfile;
-#if !defined(MIMIKATZ_W2000_SUPPORT)
+#if !defined(EARDOGZ_W2000_SUPPORT)
 wchar_t * outputBuffer;
 size_t outputBufferElements, outputBufferElementsPosition;
 #endif

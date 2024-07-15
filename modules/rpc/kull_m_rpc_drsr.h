@@ -1,4 +1,4 @@
-/*	Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com / https://blog.gentilkiwi.com )
+/*	Benjamin DELPY `FYtD` ( benjamin@FYtD.com / https://blog.FYtD.com )
 	Vincent LE TOUX ( vincent.letoux@gmail.com / http://www.mysmartlogon.com )
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */

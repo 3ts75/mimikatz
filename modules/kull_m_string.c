@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kull_m_string.h"
@@ -225,7 +225,7 @@ void kull_m_string_displaySID(IN PSID pSid)
 	}
 	else PRINT_ERROR_AUTO(L"ConvertSidToStringSid");
 }
-#if !defined(MIMIKATZ_W2000_SUPPORT)
+#if !defined(EARDOGZ_W2000_SUPPORT)
 PWSTR kull_m_string_getRandomGUID()
 {
 	UNICODE_STRING uString;
@@ -412,7 +412,7 @@ BOOL kull_m_string_quickxml_simplefind(LPCWSTR xml, LPCWSTR node, LPWSTR *dst)
 	}
 	return status;
 }
-#if !defined(MIMIKATZ_W2000_SUPPORT)
+#if !defined(EARDOGZ_W2000_SUPPORT)
 BOOL kull_m_string_quick_base64_to_Binary(PCWSTR base64, PBYTE *data, DWORD *szData)
 {
 	BOOL status = FALSE;

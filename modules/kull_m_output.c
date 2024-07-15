@@ -1,26 +1,26 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kull_m_output.h"
 
 FILE * logfile = NULL;
-#if !defined(MIMIKATZ_W2000_SUPPORT)
+#if !defined(EARDOGZ_W2000_SUPPORT)
 wchar_t * outputBuffer = NULL;
 size_t outputBufferElements = 0, outputBufferElementsPosition = 0;
 #endif
 
 void kprintf(PCWCHAR format, ...)
 {
-#if !defined(MIMIKATZ_W2000_SUPPORT)
+#if !defined(EARDOGZ_W2000_SUPPORT)
 	int varBuf;
 	size_t tempSize;
 	wchar_t * tmpBuffer;
 #endif
 	va_list args;
 	va_start(args, format);
-#if !defined(MIMIKATZ_W2000_SUPPORT)
+#if !defined(EARDOGZ_W2000_SUPPORT)
 	if(outputBuffer)
 	{
 		varBuf = _vscwprintf(format, args);
@@ -48,7 +48,7 @@ void kprintf(PCWCHAR format, ...)
 	}
 #endif
 #if !defined(_POWERKATZ)
-#if !defined(MIMIKATZ_W2000_SUPPORT)
+#if !defined(EARDOGZ_W2000_SUPPORT)
 	else
 #endif
 	{

